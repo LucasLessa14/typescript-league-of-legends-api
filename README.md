@@ -15,16 +15,22 @@ This project was developed with the following technologies:
 
 ## 🏁 Quick Start
 ``` js
-// this command execute all migrations
+// this command ceates a test database in the container
+$ docker run --name lol-mysql -e MYSQL_DATABASE=lol -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:latest
+
+// this command installs all project dependecies 
+yarn install
+
+// this command executes all migrations
 yarn typeorm migration:run
 
-// this command run application for development environment
+// this command runs application for development environment
 yarn run dev
 
-// this command build application for production environment
+// this command builds application for production environment
 yarn run build
 
-// this command run application for production environment
+// this command runs application for production environment
 yarn run start
 ```
 

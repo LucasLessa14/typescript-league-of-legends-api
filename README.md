@@ -13,8 +13,7 @@ This project was developed with the following technologies:
 - [Docker](https://www.docker.com/)
 - [MySQL](https://www.mysql.com/)
 
-## Quick Start
-
+## 🏁 Quick Start
 ``` js
 // this command execute all migrations
 yarn typeorm migration:run
@@ -27,16 +26,12 @@ yarn run build
 
 // this command run application for production environment
 yarn run start
-
 ```
 
-## To do
-
+## 🚀 To do
 - Create a CRUD of champions
 - Create a CRUD of skill's
 - Create a relacionalship between champions and skills
 
-
 ## 🧑‍💻 Author
-
 - Lucas Lessa

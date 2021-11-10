@@ -35,9 +35,9 @@ yarn run start
 ```
 
 ## 🚀 To do
-- Create a CRUD of champions
-- Create a CRUD of skill's
-- Create a relacionalship between champions and skills
+- [ ] Create a CRUD of champions
+- [ ] Create a CRUD of skill's
+- [ ] Create a relacionalship between champions and skills
 
 ## 🧑‍💻 Author
 - Lucas Lessa

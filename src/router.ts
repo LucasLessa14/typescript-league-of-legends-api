@@ -7,7 +7,7 @@ const router = express.Router();
 const createChampionController = new CreateChampionController();
 const listChampionsController = new ListChampionsController();
 
-router.post('/champions', createChampionController.handle);
 router.get('/champions', listChampionsController.handle);
+router.post('/champions', createChampionController.handle);
 
 export { router };

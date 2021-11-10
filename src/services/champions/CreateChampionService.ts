@@ -1,9 +1,9 @@
 import { getCustomRepository } from "typeorm";
-import { ChampionsRepositories } from "../repositories/ChampionsRepositories";
+import { ChampionsRepositories } from "../../repositories/ChampionsRepositories";
 
 class CreateChampionService {
 
-    async createChampion(name: string, role: string, lane: string) {
+    async execute(name: string, role: string, lane: string) {
 
         const championRepository = getCustomRepository(ChampionsRepositories);
 

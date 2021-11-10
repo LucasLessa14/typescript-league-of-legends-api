@@ -27,3 +27,5 @@ class Champions {
         }
     }
 }
+
+export { Champions };

@@ -16,7 +16,7 @@ This project was developed with the following technologies:
 ## 🏁 Quick Start
 ``` js
 // this command ceates a test database in the container
-$ docker run --name lol-mysql -e MYSQL_DATABASE=lol -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:latest
+$ docker run --name lol-mysql -e MYSQL_DATABASE=leagueoflegends -e MYSQL_ROOT_PASSWORD=password -p 3306:3306 -d mysql:latest
 
 // this command installs all project dependecies 
 yarn install

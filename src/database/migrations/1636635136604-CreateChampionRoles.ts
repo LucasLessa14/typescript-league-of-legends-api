@@ -12,7 +12,15 @@ export class CreateChampionRoles1636635136604 implements MigrationInterface {
                 },{
                     name: 'name',
                     type: 'varchar',
-                }
+                },{
+                    name: 'created_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                },{
+                    name: 'updated_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                },
             ]
         }));
     }

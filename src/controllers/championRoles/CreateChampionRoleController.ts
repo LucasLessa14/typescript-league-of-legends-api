@@ -1,7 +1,7 @@
-import { CreateChampionRoleService } from '../../services/championRoles/CreateChampionRolesService';
+import { CreateChampionRoleService } from '../../services/championRoles/CreateChampionRoleService';
 import { Request, Response } from 'express';
 
-class ChampionRoleController {
+class CreateChampionRoleController {
 
     handle(req: Request, res: Response) {
 
@@ -19,4 +19,4 @@ class ChampionRoleController {
     }
 }
 
-export { ChampionRoleController };
+export { CreateChampionRoleController };

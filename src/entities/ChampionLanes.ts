@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
 @Entity('ChampionLanes')
@@ -8,7 +8,13 @@ class ChampionLanes {
     readonly id: string;
 
     @Column()
-    lane: string;
+    name: string;
+
+    @CreateDateColumn()
+    created_at: Date;
+
+    @UpdateDateColumn()
+    updated_at: Date;
 
     constructor(){
         if (!this.id) {

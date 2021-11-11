@@ -12,7 +12,15 @@ export class CreateChampionLanes1636635709808 implements MigrationInterface {
                 },{
                     name: 'name',
                     type: 'varchar',
-                }
+                },{
+                    name: 'created_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                },{
+                    name: 'updated_at',
+                    type: 'timestamp',
+                    default: 'now()',
+                },
             ]
         }));
     }
@@ -20,5 +28,4 @@ export class CreateChampionLanes1636635709808 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('champion_lanes');
     }
-
 }

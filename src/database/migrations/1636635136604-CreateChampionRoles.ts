@@ -20,5 +20,4 @@ export class CreateChampionRoles1636635136604 implements MigrationInterface {
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropTable('champion_roles');
     }
-
 }

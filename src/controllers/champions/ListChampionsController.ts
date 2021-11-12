@@ -3,7 +3,7 @@ import { ListChampionsService } from '../../services/champions/ListChampionsServ
 
 class ListChampionsController {
 
-    public async handle(request: Request, response: Response) {
+    public async handle(request: Request, response: Response): Promise<Response> {
 
         const listChampionsService = new ListChampionsService();
 

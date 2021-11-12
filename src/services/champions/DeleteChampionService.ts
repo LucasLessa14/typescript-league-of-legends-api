@@ -1,11 +1,14 @@
+import { getCustomRepository } from "typeorm";
 import { ChampionsRepositories } from "../../repositories/ChampionsRepositories";
 
 class DeleteChampionService {
 
   async execute(id: string) {
-    const championsRepositories = new ChampionsRepositories();
+    const championsRepositories = getCustomRepository(ChampionsRepositories);
 
     const champion = await championsRepositories.findOne(id);
+    
+    console.log(champion);
 
     if (!champion) {
         throw new Error('Champion not found');

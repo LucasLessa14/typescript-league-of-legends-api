@@ -1,16 +1,22 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateChampionLanes1636635709808 implements MigrationInterface {
+export class CreateChampions1636743596114 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: 'champion_lanes',
+            name: 'champions',
             columns: [{
                     name: 'id',
                     type: 'uuid',
                     isPrimary: true,
                 },{
                     name: 'name',
+                    type: 'varchar',
+                },{
+                    name: 'lane',
+                    type: 'varchar',
+                },{
+                    name: 'role',
                     type: 'varchar',
                 },{
                     name: 'created_at',
@@ -21,11 +27,11 @@ export class CreateChampionLanes1636635709808 implements MigrationInterface {
                     type: 'timestamp',
                     default: 'now()',
                 },
-            ]
+            ],
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('champion_lanes');
+        await queryRunner.dropTable('champions');
     }
 }

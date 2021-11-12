@@ -3,17 +3,12 @@ import { v4 as uuid } from "uuid";
 
 @Entity('Champions')
 class Champions {
+
     @PrimaryColumn()
     readonly id: string;
 
     @Column()
     name: string;
-
-    @Column()
-    lane: string;
-
-    @Column()
-    role: string;
 
     @CreateDateColumn()
     created_at: Date;

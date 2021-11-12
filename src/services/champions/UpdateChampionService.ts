@@ -8,8 +8,6 @@ class UpdateChampionService {
 
         const champion = await championRepository.findOne(id);
 
-        console.log(champion);
-
         if (!champion) {
             throw new Error('Champion not found');
         }

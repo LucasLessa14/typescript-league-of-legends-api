@@ -9,11 +9,11 @@ class CreateChampionController {
 
     const createChampionService = new CreateChampionService();
 
-    const champion = createChampionService.execute(
-        name,
-        lane,
-        role,
-    );
+    const champion = createChampionService.execute({
+      name,
+      lane,
+      role
+    });
 
     return response.json(champion);
   }

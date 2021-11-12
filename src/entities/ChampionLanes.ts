@@ -20,7 +20,6 @@ class ChampionLanes {
         if (!this.id) {
             this.id = uuid();
         }
-        
     }
 }
 

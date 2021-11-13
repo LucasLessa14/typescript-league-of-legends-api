@@ -7,7 +7,7 @@ export class CreateChampionLane1636744346124 implements MigrationInterface {
             name: 'champion_lanes',
             columns: [{
                     name: 'id',
-                    type: 'uuid',
+                    type: 'varchar',
                     isPrimary: true,
                 },{
                     name: 'name',

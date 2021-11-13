@@ -3,79 +3,84 @@ import { TableColumn, Table, MigrationInterface, QueryRunner} from "typeorm";
 export class EditChampionRelations1636744392857 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropColumns('champion', ['lane', 'role']);
-
+        
         await queryRunner.createTable(new Table({
-            name: 'champion_lane',
+            name: 'champions_champion_lane',
             columns: [{
                 name: 'champion_championLane_id',
-                type: 'uuid',
+                type: 'varchar',
                 isPrimary: true,
             },{
                 name: 'champion_id',
-                type: 'uuid',
+                type: 'varchar',
             },{
                 name: 'championLane_id',
-                type: 'uuid',
+                type: 'varchar',
             },{
                 name: 'created_at',
                 type: 'timestamp',
                 default: 'now()',
             }],
             foreignKeys: [{
-                name: 'fk_champion',
-                referencedTableName: 'champion',
+                name: 'fk_champions_championLane',
+                referencedTableName: 'champions',
                 referencedColumnNames: ['id'],
                 columnNames: ['champion_id'],
-                onDelete: 'SET NULL',
-                onUpdate: 'SET NULL',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             },{
                 name: 'fk_championLane',
                 referencedTableName: 'champion_lanes',
                 referencedColumnNames: ['id'],
                 columnNames: ['championLane_id'],
-                onDelete: 'SET NULL',
-                onUpdate: 'SET NULL',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             }],
         }));
-
+        
         await queryRunner.createTable(new Table({
-            name: 'champion_role',
+            name: 'champions_champion_role',
             columns: [{
                 name: 'champion_championRole_id',
-                type: 'uuid',
+                type: 'varchar',
                 isPrimary: true,
             },{
                 name: 'champion_id',
-                type: 'uuid',
+                type: 'varchar',
             },{
                 name: 'championRole_id',
-                type: 'uuid',
+                type: 'varchar',
             },{
                 name: 'created_at',
                 type: 'timestamp',
                 default: 'now()',
             }],
             foreignKeys: [{
-                name: 'fk_champion',
-                referencedTableName: 'champion',
+                name: 'fk_champions_championRole',
+                referencedTableName: 'champions',
                 referencedColumnNames: ['id'],
                 columnNames: ['champion_id'],
-                onDelete: 'SET NULL',
-                onUpdate: 'SET NULL',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             },{
                 name: 'fk_championRole',
-                referencedTableName: 'champion_role',
+                referencedTableName: 'champion_roles',
                 referencedColumnNames: ['id'],
                 columnNames: ['championRole_id'],
-                onDelete: 'SET NULL',
-                onUpdate: 'SET NULL',
+                onDelete: 'CASCADE',
+                onUpdate: 'CASCADE',
             }],
         }));
+        
+        await queryRunner.dropColumns('champions', ['lane', 'role']);
     }
-
+    
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.addColumns('champion', [
+        
+        await queryRunner.dropTable('champions_champion_lane');
+        await queryRunner.dropTable('champions_champion_role');
+
+        await queryRunner.addColumns('champions', [
             new TableColumn({
                 name: 'lane',
                 type: 'varchar',
@@ -85,9 +90,5 @@ export class EditChampionRelations1636744392857 implements MigrationInterface {
                 type: 'varchar',
             }),
         ]);
-
-        await queryRunner.dropTable('champion_lane');
-
-        await queryRunner.dropTable('champion_role');
     }
 }

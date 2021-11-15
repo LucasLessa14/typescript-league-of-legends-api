@@ -3,7 +3,7 @@ import { CreateChampionService } from "../../services/champions/CreateChampionSe
 
 class CreateChampionController {
 
-  async handle(request: Request, response: Response) {
+  public async handle(request: Request, response: Response): Promise<Response> {
     
     const { name, lane, role } = request.body;
 

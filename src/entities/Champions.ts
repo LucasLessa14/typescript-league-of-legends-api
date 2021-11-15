@@ -1,8 +1,10 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
+// import { ChampionPassive } from "./ChampionPassive";
 import { v4 as uuid } from "uuid";
 
-@Entity('Champions')
+@Entity('champions')
 class Champions {
+
     @PrimaryColumn()
     readonly id: string;
 
@@ -10,10 +12,14 @@ class Champions {
     name: string;
 
     @Column()
-    lane: string;
+    role: string;
 
     @Column()
-    role: string;
+    lane: string;
+
+    // @OneToOne(type => ChampionPassive)
+    // @JoinColumn()
+    // passive: ChampionPassive;
 
     @CreateDateColumn()
     created_at: Date;

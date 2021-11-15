@@ -1,14 +1,20 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity('champion_roles')
-class ChampionRoles {
+@Entity('champion_passives')
+class ChampionPassive {
 
     @PrimaryColumn()
     readonly id: string;
 
     @Column()
     name: string;
+
+    @Column()
+    description: string;
+
+    @Column()
+    urlImage: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -23,4 +29,4 @@ class ChampionRoles {
     }
 }
 
-export { ChampionRoles };
+export { ChampionPassive };

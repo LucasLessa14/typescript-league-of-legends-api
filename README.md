@@ -4,6 +4,9 @@ This project consists of an API using NodeJS and TypeScript that provides data t
 ### Changelog
 The version control of this project can be seen here: [CHANGELOG.md](changelog.md)
 
+### API Documentation
+This link has everything you need to consume this API: [documentation here](https://www.notion.so/League-of-Legends-API-docs-85eb51ad203b42e8aaf923612dd9489c)
+
 ## 💻 Technologies
 This project was developed with the following technologies:
 
@@ -35,9 +38,10 @@ yarn run start
 ```
 
 ## 🚀 To do
-- [ ] Create a CRUD of champions
-- [ ] Create a CRUD of skill's
-- [ ] Create a relacionalship between champions and skills
+- [x] Create a CRUD of champions
+- [ ] Create a CRUD of skill
+- [ ] Create a CRUD of items
+- [ ] Create a CRUD of runes
 
 ## 🧑‍💻 Author
 - Lucas Lessa

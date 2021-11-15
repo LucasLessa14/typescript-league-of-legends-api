@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity('Champion_lanes')
+@Entity('champion_lanes')
 class ChampionLanes {
 
     @PrimaryColumn()
@@ -16,7 +16,7 @@ class ChampionLanes {
     @UpdateDateColumn()
     updated_at: Date;
 
-    constructor(){
+    constructor() {
         if (!this.id) {
             this.id = uuid();
         }

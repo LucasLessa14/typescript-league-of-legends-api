@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity('Champion_roles')
+@Entity('champion_roles')
 class ChampionRoles {
 
     @PrimaryColumn()

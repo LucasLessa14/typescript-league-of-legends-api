@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
-import { ChampionPassive } from "./ChampionPassive";
+// import { ChampionPassive } from "./ChampionPassive";
 import { v4 as uuid } from "uuid";
 
 @Entity('champions')

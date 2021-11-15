@@ -1,8 +1,8 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 
-@Entity('Champion_lanes')
-class ChampionLanes {
+@Entity('champion_passive')
+class ChampionPassive {
 
     @PrimaryColumn()
     readonly id: string;
@@ -10,17 +10,23 @@ class ChampionLanes {
     @Column()
     name: string;
 
+    @Column()
+    description: string;
+
+    @Column()
+    urlImage: string;
+
     @CreateDateColumn()
     created_at: Date;
 
     @UpdateDateColumn()
     updated_at: Date;
 
-    constructor(){
+    constructor() {
         if (!this.id) {
             this.id = uuid();
         }
     }
 }
 
-export { ChampionLanes };
+export { ChampionPassive };

@@ -15,7 +15,7 @@ class UpdateChampionService {
         const championRepository = getCustomRepository(ChampionsRepositories);
 
         const champion = await championRepository.findOne(id);
-
+        
         if (!champion) throw new Error('Champion not found');
 
         if (name && champion.name != name) champion.name = name;
@@ -24,11 +24,13 @@ class UpdateChampionService {
 
         if (lane && champion.lane != lane) champion.lane = lane;
 
-        if (passiveId && champion.passive.id != passiveId) {
+        if (passiveId) {
             
             const passiveRepository = getCustomRepository(ChampionPassiveRepositories);
     
             const passive = await passiveRepository.findOne(passiveId);
+
+            console.log(passive);
     
             if (!passive) throw new Error('Passive not found');
 
@@ -38,7 +40,7 @@ class UpdateChampionService {
         try {
             const updateChampion = await championRepository.update(id, champion);
 
-            return updateChampion;
+            return champion;
 
         } catch (error) {
             throw new Error('Champion not found');

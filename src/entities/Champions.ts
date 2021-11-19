@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn, OneToOne, JoinColumn, IsNull } from "typeorm";
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
 import { ChampionPassive } from "./ChampionPassive";
 import { v4 as uuid } from "uuid";
 
@@ -17,13 +17,13 @@ class Champions {
     @Column()
     lane: string;
 
-    @OneToOne(type => ChampionPassive)
-    @JoinColumn()
+    @OneToOne(() => ChampionPassive)
+    @JoinColumn()  
     passive: ChampionPassive;
 
     @CreateDateColumn()
     created_at: Date;
-
+    
     @UpdateDateColumn()
     updated_at: Date;
 

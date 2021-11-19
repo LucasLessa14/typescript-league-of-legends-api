@@ -8,7 +8,7 @@ class ListChampionsService {
 
         const championsRepository = getCustomRepository(ChampionsRepositories);
 
-        const champions = await championsRepository.find();
+        const champions = await championsRepository.find({ relations: ["passive"] });
 
         return champions;
     }

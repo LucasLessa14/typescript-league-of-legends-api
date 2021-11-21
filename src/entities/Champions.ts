@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
+import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import { ChampionPassive } from "./ChampionPassive";
 import { v4 as uuid } from "uuid";
+import { Skill } from "./Skill";
 
 @Entity('champions')
 class Champions {
@@ -20,6 +21,10 @@ class Champions {
     @OneToOne(() => ChampionPassive)
     @JoinColumn()  
     passive: ChampionPassive;
+
+    @OneToMany(() => Skill, skill => skill.champion)
+    @JoinColumn()
+    skills: Skill[];
 
     @CreateDateColumn()
     created_at: Date;

@@ -40,7 +40,7 @@ yarn run start
 
 ## 🚀 To do
 - [x] Create a CRUD of champions
-- [ ] Create a CRUD of passive
+- [ ] Create a CRUD of passive/lane/role
 - [ ] Create a CRUD of skill
 - [ ] Create a CRUD of items
 - [ ] Create a CRUD of runes

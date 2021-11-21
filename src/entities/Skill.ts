@@ -20,7 +20,9 @@ class Skill {
     @Column()
     range: string;
 
-    @Column()
+    @Column({
+        length: 1000
+    })
     description: string;
 
     @Column()

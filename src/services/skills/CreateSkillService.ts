@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { SkillsRepositories } from "../../repositories/SkillsRepositories";
-import { FindByIdChampionService } from "../champions/FindByIdChampionService";
+import { FindByNameChampionService } from "../champions/FindByNameChampionService";
 
 interface ISkillRequest {
     name: string;
@@ -10,16 +10,18 @@ interface ISkillRequest {
     range: string;
     letter: string;
     urlImageSkill: string;
-    championId: string;
+    championName: string;
 }
 
 class CreateSkillService {
 
-    async execute({ name, description, cooldown, cost, range, letter, urlImageSkill, championId }: ISkillRequest) {
+    async execute({ name, description, cooldown, cost, range, letter, urlImageSkill, championName }: ISkillRequest) {
         
         const skillRepository = getCustomRepository(SkillsRepositories);
 
-        const champion = await new FindByIdChampionService().execute(championId);
+        const champion = await new FindByNameChampionService().execute(championName);
+
+        if (!champion) throw new Error('Champion not found');
 
         const skill = skillRepository.create({
             name,

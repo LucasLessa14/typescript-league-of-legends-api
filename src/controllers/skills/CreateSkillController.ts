@@ -14,9 +14,9 @@ interface ISkillRequest {
 
 class CreateSkillController {
 
-    async handle(req: Request, res: Response) {
+    async handle(request: Request, response: Response) {
 
-        const { name, description, cooldown, cost, range, letter, urlImageSkill, championName } = req.body as ISkillRequest;
+        const { name, description, cooldown, cost, range, letter, urlImageSkill, championName } = request.body as ISkillRequest;
 
         const createSkillService = new CreateSkillService();
 
@@ -31,7 +31,7 @@ class CreateSkillController {
             championName
         });
 
-        return res.json(skill);
+        return response.status(201).json(skill);
     }
 }
 

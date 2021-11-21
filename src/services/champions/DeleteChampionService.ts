@@ -7,12 +7,8 @@ class DeleteChampionService {
     const championsRepositories = getCustomRepository(ChampionsRepositories);
 
     const champion = await championsRepositories.findOne(id);
-    
-    console.log(champion);
 
-    if (!champion) {
-        throw new Error('Champion not found');
-    }
+    if (!champion) throw new Error('Champion not found');
 
     try {
         await championsRepositories.delete(id);

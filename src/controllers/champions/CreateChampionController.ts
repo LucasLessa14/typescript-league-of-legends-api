@@ -15,7 +15,7 @@ class CreateChampionController {
       role
     });
 
-    return response.json(champion);
+    return response.status(201).json(champion);
   }
 }
 

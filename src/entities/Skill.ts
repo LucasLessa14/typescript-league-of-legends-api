@@ -15,7 +15,7 @@ class Skill {
     cooldown: string;
 
     @Column()
-    cust: string;
+    cost: string;
 
     @Column()
     range: string;

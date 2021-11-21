@@ -6,6 +6,11 @@ class FindByIdChampionService {
     public async execute(championId: string) {
         const skillRepository = getCustomRepository(SkillsRepositories);
 
+        const skills = await skillRepository.find();
+
+        return skills;
+
+        
         // const champion = await skillRepository.findOne({
         //     where: {
         //         championId

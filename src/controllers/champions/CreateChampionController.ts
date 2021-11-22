@@ -9,7 +9,7 @@ class CreateChampionController {
 
     const createChampionService = new CreateChampionService();
 
-    const champion = createChampionService.execute({
+    const champion = await createChampionService.execute({
       name,
       lane,
       role

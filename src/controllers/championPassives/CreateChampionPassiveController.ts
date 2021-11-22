@@ -5,17 +5,13 @@ class CreateChampionPassiveController {
 
     async handle(req: Request, res: Response) {
 
-        try {
-            const { name, description, urlImage } = req.body;
+        const { name, description, urlImage } = req.body;
 
-            const createChampionPassive = new CreateChampionPassiveService();
+        const createChampionPassive = new CreateChampionPassiveService();
 
-            const championPassive = await createChampionPassive.execute(name, description, urlImage);
+        const championPassive = await createChampionPassive.execute(name, description, urlImage);
 
-            return res.json(championPassive);
-        } catch (err) {
-            return res.status(400).json({ error: err.message });
-        }
+        return res.json(championPassive);
     }
 }
  

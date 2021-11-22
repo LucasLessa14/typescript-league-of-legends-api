@@ -5,11 +5,11 @@ class FindByNameChampionController {
 
   public async handle(request: Request, response: Response): Promise<Response> {
     
-    const { name } = request.params;
+    const { championName } = request.params;
 
     const findByNameChampionService = new FindByNameChampionService();
 
-    const champion = await findByNameChampionService.execute(name);
+    const champion = await findByNameChampionService.execute(championName);
     
     return response.json(champion);
 

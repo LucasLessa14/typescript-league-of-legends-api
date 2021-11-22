@@ -3,19 +3,15 @@ import { Request, Response } from 'express';
 
 class CreateChampionLaneController {
 
-    handle(request: Request, response: Response) {
+    async handle(request: Request, response: Response) {
 
-        try {
-            const { name } = request.body;
+        const { name } = request.body;
 
-            const createChampionLane = new CreateChampionLaneService();
+        const createLane = new CreateChampionLaneService();
 
-            const championLane = createChampionLane.execute(name);
+        const lane = await createLane.execute(name);
 
-            return response.json(championLane);
-        } catch (err) {
-            return response.status(400).json({ error: err.message });
-        }
+        return response.json(lane);
     }
 }
 

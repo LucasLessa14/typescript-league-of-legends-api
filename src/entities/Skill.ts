@@ -1,6 +1,6 @@
-import { Entity, CreateDateColumn, UpdateDateColumn, Column, PrimaryColumn, JoinColumn, ManyToOne } from "typeorm";
+import { Entity, CreateDateColumn, UpdateDateColumn, Column, PrimaryColumn, JoinColumn, ManyToOne, Unique } from "typeorm";
 import { Champions } from "./Champions";
-import { v4 as uuid } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
 @Entity('skills')
 class Skill {
@@ -12,6 +12,9 @@ class Skill {
     name: string;
 
     @Column()
+    slug: string;
+
+    @Column()
     cooldown: string;
 
     @Column()
@@ -20,9 +23,7 @@ class Skill {
     @Column()
     range: string;
 
-    @Column({
-        length: 1000
-    })
+    @Column({ length: 1000 })
     description: string;
 
     @Column()
@@ -42,9 +43,7 @@ class Skill {
     updated_at: Date;
 
     constructor() {
-        if (!this.id) {
-            this.id = uuid();
-        }
+        if (!this.id) this.id = uuidv4();
     }
 }
 

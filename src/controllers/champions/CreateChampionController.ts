@@ -5,17 +5,19 @@ class CreateChampionController {
 
   public async handle(request: Request, response: Response): Promise<Response> {
     
-    const { name, lane, role } = request.body;
+    const { slug } = request.params;
+    const { name, lane, role, passiveId } = request.body;
 
     const createChampionService = new CreateChampionService();
 
     const champion = await createChampionService.execute({
       name,
       lane,
-      role
+      role,
+      passiveId
     });
 
-    return response.status(201).json(champion);
+    return response.json(champion);
   }
 }
 

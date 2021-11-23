@@ -1,35 +1,46 @@
 import { getCustomRepository } from "typeorm";
 import { ChampionsRepositories } from "../../repositories/ChampionsRepositories";
-// import { ChampionPassiveRepositories } from "../../repositories/ChampionPassiveRepositories";
+import { ChampionPassiveRepositories } from "../../repositories/ChampionPassiveRepositories";
+import { toSlug } from "../../utils/toSlugUtil";
+import { Champions } from "../../entities/Champions";
 
 interface IChampionRequest {
     name: string;
     role: string;
     lane: string;
-    // passiveId?: string;
+    passiveId?: string;
 }
 
 class CreateChampionService {
 
-    async execute({ name, role, lane }: IChampionRequest) {
+    async execute({ name, role, lane, passiveId }: IChampionRequest): Promise<Champions> {
+
+        if (!name) throw new Error('Name is required');
+        
+        const slug = toSlug(name);
 
         const championRepository = getCustomRepository(ChampionsRepositories);
 
-        if (!name || !role || !lane) throw new Error('Missing parameters');
+        const champion = await championRepository.findOne({ where: { slug } });
+        
+        if (champion) throw new Error('Champion already exists');
 
-        const champion = { name, role, lane };
+        const championPassiveRepository = getCustomRepository(ChampionPassiveRepositories);
 
-        const championAlreadyExists = await championRepository.findOne({ name });
-
-        if (championAlreadyExists) throw new Error('Champion already exists');
-
-        const createChampion = championRepository.create(champion);
-
+        const passive = await championPassiveRepository.findOne({ where: { id: passiveId } });
+        
+        const createChampion = championRepository.create({
+            name,
+            slug,
+            role,
+            lane,
+            passive: passive ? passive : null
+        });
+        
         await championRepository.save(createChampion);
 
-        return champion;
+        return createChampion;
     }
 }
 
 export { CreateChampionService };
-

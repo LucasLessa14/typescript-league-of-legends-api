@@ -1,9 +1,10 @@
 import { getCustomRepository } from "typeorm";
 import { ChampionsRepositories } from "../../repositories/ChampionsRepositories";
 import { ChampionPassiveRepositories } from "../../repositories/ChampionPassiveRepositories";
+import { toSlug } from "../../utils/toSlugUtil";
 
 interface IChampionRequest {
-    id: string;
+    slug: string;
     name?: string;
     role?: string;
     lane?: string;
@@ -11,32 +12,33 @@ interface IChampionRequest {
 }
 
 class UpdateChampionService {
-    public async execute({id, name, role, lane, passiveId}: IChampionRequest) {
+    async execute({ slug, name, role, lane, passiveId }: IChampionRequest) {
 
-        const championRepository = getCustomRepository(ChampionsRepositories);
+        const championsRepository = getCustomRepository(ChampionsRepositories);
 
-        const champion = await championRepository.findOne(id);
+        const champion = await championsRepository.findOne({ where: { slug } });
         
         if (!champion) throw new Error('Champion not found');
-
-        if (name) champion.name = name;
+        
         if (role) champion.role = role;
         if (lane) champion.lane = lane;
+        if (name) {
+            champion.name = name;
+            champion.slug = toSlug(name);
+        }
 
         if (passiveId) {
             
             const passiveRepository = getCustomRepository(ChampionPassiveRepositories);
     
             const passive = await passiveRepository.findOne(passiveId);
-
-            console.log(passive);
     
             if (!passive) throw new Error('Passive not found');
 
             champion.passive = passive;
         }
 
-        const updateChampion = await championRepository.update(id, champion);
+        await championsRepository.update(champion.id, champion);
 
         return champion;
     }

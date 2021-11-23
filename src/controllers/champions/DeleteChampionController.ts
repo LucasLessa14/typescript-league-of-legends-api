@@ -4,13 +4,13 @@ import { DeleteChampionService } from "../../services/champions/DeleteChampionSe
 class DeleteChampionController {
   public async handle(request: Request, response: Response): Promise<Response> {
 
-    const { id } = request.params;
+    const { slug } = request.params;
 
     const deleteChampion = new DeleteChampionService();
 
-    const champion = await deleteChampion.execute(id);
+    const champion = await deleteChampion.execute(slug);
 
-    return response.status(204).json(champion);
+    return response.json({ message: 'Champion deleted', champion });
   }
 }
 

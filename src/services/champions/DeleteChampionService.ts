@@ -3,23 +3,16 @@ import { ChampionsRepositories } from "../../repositories/ChampionsRepositories"
 
 class DeleteChampionService {
 
-  async execute(id: string) {
+  async execute(slug: string) {
     const championsRepositories = getCustomRepository(ChampionsRepositories);
 
-    const champion = await championsRepositories.findOne(id);
+    const champion = await championsRepositories.findOne({ where: { slug } });
 
     if (!champion) throw new Error('Champion not found');
 
-    try {
-        await championsRepositories.delete(id);
+    await championsRepositories.delete(champion.id);
 
-        return champion;
-
-    } catch (err) {
-
-        throw new Error(err.message);
-    }
-
+    return champion;
   }
 }
 

@@ -2,7 +2,7 @@ import express from 'express';
 
 import { CreateChampionController } from '../controllers/champions/CreateChampionController';
 import { ListChampionsController } from '../controllers/champions/ListChampionsController';
-import { FindByNameChampionController } from '../controllers/champions/FindByNameChampionController';
+import { FindChampionBySlugController } from '../controllers/champions/FindChampionBySlugController';
 import { UpdateChampionController } from '../controllers/champions/UpdateChampionController';
 import { DeleteChampionController } from '../controllers/champions/DeleteChampionController';
 
@@ -10,14 +10,14 @@ const championsRoutes = express.Router();
 
 const createChampionController = new CreateChampionController();
 const listChampionsController = new ListChampionsController();
-const findByNameChampionController = new FindByNameChampionController();
+const findChampionBySlugController = new FindChampionBySlugController();
 const updateChampionController = new UpdateChampionController();
 const deleteChampionController = new DeleteChampionController();
 
-championsRoutes.get('/', listChampionsController.handle);
-championsRoutes.get('/:championName', findByNameChampionController.handle);
 championsRoutes.post('/', createChampionController.handle);
-championsRoutes.put('/', updateChampionController.handle);
-championsRoutes.delete('/:championName', deleteChampionController.handle);
+championsRoutes.get('/', listChampionsController.handle);
+championsRoutes.get('/:slug', findChampionBySlugController.handle);
+championsRoutes.put('/:slug', updateChampionController.handle);
+championsRoutes.delete('/:slug', deleteChampionController.handle);
 
 export { championsRoutes };

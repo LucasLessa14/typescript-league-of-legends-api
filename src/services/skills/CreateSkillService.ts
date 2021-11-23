@@ -4,6 +4,7 @@ import { FindChampionBySlugService } from "../champions/FindChampionBySlugServic
 
 interface ISkillRequest {
     name: string;
+    slug: string;
     description: string;
     cooldown: string;
     cost: string;
@@ -15,16 +16,17 @@ interface ISkillRequest {
 
 class CreateSkillService {
 
-    async execute({ name, description, cooldown, cost, range, letter, urlImageSkill, championName }: ISkillRequest) {
+    async execute({ name, slug, description, cooldown, cost, range, letter, urlImageSkill, championName }: ISkillRequest) {
         
-        const skillRepository = getCustomRepository(SkillsRepositories);
+        const skillsRepository = getCustomRepository(SkillsRepositories);
 
         const champion = await new FindChampionBySlugService().execute(championName);
 
         if (!champion) throw new Error('Champion not found');
 
-        const skill = skillRepository.create({
+        const skill = skillsRepository.create({
             name,
+            slug,
             description,
             cooldown,
             cost,
@@ -34,7 +36,7 @@ class CreateSkillService {
             urlImageSkill
         });
 
-        await skillRepository.save(skill);
+        await skillsRepository.save(skill);
 
         return skill;
     }

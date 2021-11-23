@@ -4,12 +4,13 @@ import { UpdateChampionService } from "../../services/champions/UpdateChampionSe
 class UpdateChampionController {
   public async handle(request: Request, response: Response): Promise<Response> {
 
-    const { id, name, role, lane, passiveId } = request.body;
+    const { slug } = request.params;
+    const { name, role, lane, passiveId } = request.body;
 
     const updateChampion = new UpdateChampionService();
 
     const updatedChampion = await updateChampion.execute({
-        id,
+        slug,
         name,
         role,
         lane,

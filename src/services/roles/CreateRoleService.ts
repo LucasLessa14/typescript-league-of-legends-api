@@ -9,6 +9,10 @@ class CreateRoleService {
         const rolesRepositories = getCustomRepository(RolesRepositories);
 
         if (!name) throw new Error('Name is required');
+
+        const validated = await rolesRepositories.findOne({ where: { name } });
+
+        if (validated) throw new Error('Role name already exists');
         
         const roles = rolesRepositories.create({
             name,

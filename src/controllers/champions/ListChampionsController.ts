@@ -9,7 +9,10 @@ class ListChampionsController {
 
         const champions = await listChampionsService.execute();
 
-        return response.json(champions);
+        return response.json({
+            count: champions.length,
+            champions: champions
+        });
     }
 }
 

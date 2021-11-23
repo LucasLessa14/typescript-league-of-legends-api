@@ -13,6 +13,9 @@ class Champions {
     name: string;
 
     @Column()
+    slug: string;
+
+    @Column()
     role: string;
 
     @Column()

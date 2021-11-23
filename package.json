@@ -9,7 +9,7 @@
     "dev": "ts-node-dev src/index.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
     "build": "tsc",
-    "start": "node ./dist index.js"
+    "start": "node dist/index.js"
   },
   "dependencies": {
     "class-transformer": "^0.4.0",

@@ -1,17 +1,17 @@
 import express from "express";
 
-import { CreateChampionRoleController } from '../controllers/championRoles/CreateChampionRoleController';
-import { ListChampionRolesController } from '../controllers/championRoles/ListChampionRolesController';
-import { DeleteChampionRoleController } from '../controllers/championRoles/DeleteChampionRoleController';
+import { CreateRoleController } from '../controllers/roles/CreateRoleController';
+import { ListRolesController } from '../controllers/roles/ListRolesController';
+import { DeleteRoleController } from '../controllers/roles/DeleteRoleController';
 
 const rotesRoutes = express.Router();
 
-const createChampionRoleController = new CreateChampionRoleController();
-const listChampionRolesController = new ListChampionRolesController();
-const deleteChampionRoleController = new DeleteChampionRoleController();
+const createRoleController = new CreateRoleController();
+const listRolesController = new ListRolesController();
+const deleteRoleController = new DeleteRoleController();
 
-rotesRoutes.post('/', createChampionRoleController.handle);
-rotesRoutes.get('/', listChampionRolesController.handle);
-rotesRoutes.delete('/:roleName', deleteChampionRoleController.handle);
+rotesRoutes.post('/', createRoleController.handle);
+rotesRoutes.get('/', listRolesController.handle);
+rotesRoutes.delete('/:slug', deleteRoleController.handle);
 
 export { rotesRoutes };

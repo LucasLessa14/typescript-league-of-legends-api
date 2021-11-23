@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { FindByNameChampionService } from '../../services/champions/FindByNameChampionService';
+import { FindChampionBySlugService } from '../../services/champions/FindChampionBySlugService';
 
 class FindByNameChampionController {
 
@@ -7,14 +7,13 @@ class FindByNameChampionController {
     
     const { championName } = request.params;
 
-    const findByNameChampionService = new FindByNameChampionService();
+    const findByNameChampionService = new FindChampionBySlugService();
 
     const champion = await findByNameChampionService.execute(championName);
     
     return response.json(champion);
 
   }
-
 }
 
 export { FindByNameChampionController };

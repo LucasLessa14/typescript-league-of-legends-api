@@ -1,6 +1,6 @@
 import { getCustomRepository } from 'typeorm';
 import { SkillsRepositories } from '../../repositories/SkillsRepositories';
-import { FindByNameChampionService } from "../champions/FindByNameChampionService";
+import { FindChampionBySlugService } from "../champions/FindChampionBySlugService";
 
 class FindSkillsByChampionService {
 
@@ -8,7 +8,7 @@ class FindSkillsByChampionService {
 
         const skillRepository = getCustomRepository(SkillsRepositories);
 
-        const champion = await new FindByNameChampionService().execute(championName);
+        const champion = await new FindChampionBySlugService().execute(championName);
 
         if (!champion) throw new Error('Champion not found');
 

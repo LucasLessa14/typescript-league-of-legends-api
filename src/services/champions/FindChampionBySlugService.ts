@@ -1,14 +1,14 @@
 import { getCustomRepository } from 'typeorm';
 import { ChampionsRepositories } from '../../repositories/ChampionsRepositories';
 
-class FindByNameChampionService {
+class FindChampionBySlugService {
 
-    public async execute(championName: string) {
+    public async execute(championSlug: string) {
         const championRepository = getCustomRepository(ChampionsRepositories);
 
         const champion = await championRepository.findOne({
             where: {
-                name: championName
+                slug: championSlug
             }
         });
 
@@ -18,4 +18,4 @@ class FindByNameChampionService {
     }
 }
 
-export { FindByNameChampionService };
+export { FindChampionBySlugService };

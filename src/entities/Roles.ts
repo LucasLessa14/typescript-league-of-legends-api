@@ -1,14 +1,17 @@
 import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-@Entity('champion_roles')
-class ChampionRoles {
+@Entity('roles')
+class Roles {
 
     @PrimaryColumn()
     readonly id: string;
 
     @Column()
     name: string;
+
+    @Column()
+    slug: string;
 
     @CreateDateColumn()
     created_at: Date;
@@ -18,9 +21,9 @@ class ChampionRoles {
 
     constructor() {
         if (!this.id) {
-            this.id = uuid();
+            this.id = uuidv4();
         }
     }
 }
 
-export { ChampionRoles };
+export { Roles };

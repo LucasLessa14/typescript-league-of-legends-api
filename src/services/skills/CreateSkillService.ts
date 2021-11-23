@@ -11,18 +11,18 @@ interface ISkillRequest {
     range: string;
     letter: string;
     urlImageSkill: string;
-    championName: string;
+    // championName?: string;
 }
 
 class CreateSkillService {
 
-    async execute({ name, slug, description, cooldown, cost, range, letter, urlImageSkill, championName }: ISkillRequest) {
+    async execute({ name, slug, description, cooldown, cost, range, letter, urlImageSkill }: ISkillRequest) {
         
         const skillsRepository = getCustomRepository(SkillsRepositories);
 
-        const champion = await new FindChampionBySlugService().execute(championName);
+        // const champion = await new FindChampionBySlugService().execute(championName);
 
-        if (!champion) throw new Error('Champion not found');
+        // if (!champion) throw new Error('Champion not found');
 
         const skill = skillsRepository.create({
             name,
@@ -32,7 +32,7 @@ class CreateSkillService {
             cost,
             range,
             letter,
-            champion,
+            champion: null,
             urlImageSkill
         });
 

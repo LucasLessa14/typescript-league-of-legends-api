@@ -9,14 +9,15 @@ interface ISkillRequest {
     range: string;
     letter: string;
     urlImageSkill: string;
-    championName: string;
+    // championName: string;
 }
 
 class CreateSkillController {
 
     async handle(request: Request, response: Response) {
 
-        const { name, description, cooldown, cost, range, letter, urlImageSkill, championName } = request.body as ISkillRequest;
+        const { name, description, cooldown, cost, range, letter, urlImageSkill } = request.body as ISkillRequest;
+        const { slug } = request.params;
 
         const createSkillService = new CreateSkillService();
 
@@ -24,11 +25,11 @@ class CreateSkillController {
             name,
             description,
             cooldown,
+            slug,
             cost,
             range,
             letter,
-            urlImageSkill,
-            championName
+            urlImageSkill
         });
 
         return response.status(201).json(skill);

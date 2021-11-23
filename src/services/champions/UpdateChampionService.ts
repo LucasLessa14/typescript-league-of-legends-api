@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { ChampionsRepositories } from "../../repositories/ChampionsRepositories";
-import { ChampionPassiveRepositories } from "../../repositories/ChampionPassiveRepositories";
+import { PassivesRepositories } from "../../repositories/PassivesRepositories";
 import { toSlug } from "../../utils/toSlugUtil";
 
 interface IChampionRequest {
@@ -29,7 +29,7 @@ class UpdateChampionService {
 
         if (passiveId) {
             
-            const passiveRepository = getCustomRepository(ChampionPassiveRepositories);
+            const passiveRepository = getCustomRepository(PassivesRepositories);
     
             const passive = await passiveRepository.findOne(passiveId);
     

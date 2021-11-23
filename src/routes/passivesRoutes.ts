@@ -1,14 +1,14 @@
 import express from 'express';
 
-import { CreateChampionPassiveController } from '../controllers/championPassives/CreateChampionPassiveController';
-import { ListChampionPassivesController } from '../controllers/championPassives/ListChampionPassiveController';
+import { CreatePassiveController } from '../controllers/passives/CreatePassiveController';
+import { ListPassivesController } from '../controllers/passives/ListPassivesController';
 
 const passivesRoutes = express.Router();
 
-const createChampionPassiveController = new CreateChampionPassiveController();
-const listChampionPassivesController = new ListChampionPassivesController();
+const createPassiveController = new CreatePassiveController();
+const listPassivesController = new ListPassivesController();
 
-passivesRoutes.post('/', createChampionPassiveController.handle);
-passivesRoutes.get('/', listChampionPassivesController.handle);
+passivesRoutes.post('/', createPassiveController.handle);
+passivesRoutes.get('/', listPassivesController.handle);
 
 export { passivesRoutes };

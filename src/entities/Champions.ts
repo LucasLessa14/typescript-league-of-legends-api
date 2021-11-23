@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, UpdateDateColumn, Entity, PrimaryColumn, OneToOne, JoinColumn, OneToMany } from "typeorm";
-import { ChampionPassive } from "./ChampionPassive";
-import { v4 as uuid } from "uuid";
+import { v4 as uuidv4 } from "uuid";
+import { Passive } from "./Passive";
 import { Skill } from "./Skill";
 
 @Entity('champions')
@@ -21,9 +21,9 @@ class Champions {
     @Column()
     lane: string;
 
-    @OneToOne(() => ChampionPassive)
+    @OneToOne(() => Passive)
     @JoinColumn()  
-    passive: ChampionPassive;
+    passive: Passive;
 
     @OneToMany(() => Skill, skill => skill.champion)
     @JoinColumn()
@@ -36,9 +36,7 @@ class Champions {
     updated_at: Date;
 
     constructor() {
-        if (!this.id) {
-            this.id = uuid();
-        }
+        if (!this.id) this.id = uuidv4();
     }
 }
 

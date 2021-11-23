@@ -1,7 +1,7 @@
 import { EntityRepository, Repository } from "typeorm";
-import { Roles } from "../entities/Roles";
+import { Role } from "../entities/Roles";
 
-@EntityRepository(Roles)
-class RolesRepositories extends Repository<Roles>{}
+@EntityRepository(Role)
+class RolesRepositories extends Repository<Role>{}
 
 export { RolesRepositories };

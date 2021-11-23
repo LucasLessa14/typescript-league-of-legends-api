@@ -1,6 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { ChampionsRepositories } from "../../repositories/ChampionsRepositories";
-import { ChampionPassiveRepositories } from "../../repositories/ChampionPassiveRepositories";
+import { PassivesRepositories } from "../../repositories/PassivesRepositories";
 import { toSlug } from "../../utils/toSlugUtil";
 import { Champions } from "../../entities/Champions";
 
@@ -25,16 +25,16 @@ class CreateChampionService {
         
         if (champion) throw new Error('Champion already exists');
 
-        const championPassiveRepository = getCustomRepository(ChampionPassiveRepositories);
+        const passiveRepository = getCustomRepository(PassivesRepositories);
 
-        const passive = await championPassiveRepository.findOne({ where: { id: passiveId } });
+        const passive = await passiveRepository.findOne( passiveId );
         
         const createChampion = championRepository.create({
             name,
             slug,
             role,
             lane,
-            passive: passive ? passive : null
+            passive: passiveId ? passive : null
         });
         
         await championRepository.save(createChampion);

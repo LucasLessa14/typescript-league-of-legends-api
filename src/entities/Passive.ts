@@ -1,8 +1,8 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
-import { v4 as uuid } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-@Entity('champion_passives')
-class ChampionPassive {
+@Entity('passives')
+class Passive {
 
     @PrimaryColumn()
     readonly id: string;
@@ -23,10 +23,8 @@ class ChampionPassive {
     updated_at: Date;
 
     constructor() {
-        if (!this.id) {
-            this.id = uuid();
-        }
+        if (!this.id) this.id = uuidv4();
     }
 }
 
-export { ChampionPassive };
+export { Passive };
